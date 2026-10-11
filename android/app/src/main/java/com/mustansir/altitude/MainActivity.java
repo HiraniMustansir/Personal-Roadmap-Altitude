@@ -3,11 +3,11 @@ package com.mustansir.altitude;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Build;
-import android.util.Base64;
 import android.graphics.Insets;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Base64;
 import android.view.WindowInsets;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -19,17 +19,30 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FilterInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
-    private static final String APP_HOST = "appassets.androidplatform.net";
+    private static final String OLD_HOST = "appassets.androidplatform.net";
+    private static final String LIVE_HOST = "altitude-lime-two.vercel.app";
+    private static final String OLD_URL = "https://" + OLD_HOST + "/assets/index.html";
+    private static final String LIVE_URL = "https://" + LIVE_HOST + "/";
+    private static final String STORAGE_KEY = "altitude-roadmap-v1";
+    private static final String MIGRATION_KEY = "live_origin_migrated";
     private static final int IMPORT_REQUEST = 1001;
     private static final int EXPORT_REQUEST = 1002;
     private WebView webView;
     private ValueCallback<Uri[]> importCallback;
     private byte[] pendingExport;
+    private boolean migrationPending;
+    private String oldProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,31 +66,59 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.addJavascriptInterface(new AndroidBridge(), "AltitudeAndroid");
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                if (!isAppUrl(uri)) return null;
-                String path = uri.getPath();
-                if (path == null || !path.startsWith("/assets/")) return null;
-                String filename = path.substring("/assets/".length());
-                if (filename.isEmpty() || filename.contains("..") || filename.startsWith("/")) return null;
-                try {
-                    InputStream stream = getAssets().open(filename);
-                    return new WebResourceResponse(mimeType(filename), "UTF-8", stream);
-                } catch (Exception ignored) {
-                    return null;
+                if (isOldUrl(uri)) {
+                    String path = uri.getPath();
+                    if (path == null || !path.startsWith("/assets/")) return null;
+                    return bundledAsset(path.substring("/assets/".length()));
                 }
+                if (isLiveUrl(uri)) {
+                    String name = assetName(uri.getPath());
+                    if (name != null) return liveOrBundled(uri, name);
+                }
+                return null;
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                if (request.isForMainFrame() && !isAppUrl(request.getUrl())) {
+                if (request.isForMainFrame() && !isOldUrl(request.getUrl()) && !isLiveUrl(request.getUrl())) {
                     openExternal(request.getUrl());
                     return true;
                 }
                 return false;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                Uri uri = Uri.parse(url);
+                if (migrationPending && isOldUrl(uri)) {
+                    view.evaluateJavascript("localStorage.getItem('" + STORAGE_KEY + "')", result -> {
+                        oldProgress = decodeJsString(result);
+                        view.loadUrl(LIVE_URL);
+                    });
+                } else if (migrationPending && isLiveUrl(uri)) {
+                    migrationPending = false;
+                    if (oldProgress != null) {
+                        String script = "(function(){try{if(!localStorage.getItem('" + STORAGE_KEY + "')){" +
+                                "localStorage.setItem('" + STORAGE_KEY + "'," + JSONObject.quote(oldProgress) + ");}" +
+                                "return true;}catch(e){return false;}})()";
+                        view.evaluateJavascript(script, result -> {
+                            if ("true".equals(result)) {
+                                getPreferences(MODE_PRIVATE).edit().putBoolean(MIGRATION_KEY, true).apply();
+                                view.reload();
+                            } else {
+                                Toast.makeText(MainActivity.this, "Could not move old progress. Use backup import.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        getPreferences(MODE_PRIVATE).edit().putBoolean(MIGRATION_KEY, true).apply();
+                    }
+                }
             }
         });
         webView.setWebChromeClient(new WebChromeClient() {
@@ -97,11 +138,64 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        webView.loadUrl("https://" + APP_HOST + "/assets/index.html");
+        migrationPending = !getPreferences(MODE_PRIVATE).getBoolean(MIGRATION_KEY, false);
+        webView.loadUrl(migrationPending ? OLD_URL : LIVE_URL);
     }
 
-    private boolean isAppUrl(Uri uri) {
-        return "https".equals(uri.getScheme()) && APP_HOST.equals(uri.getHost());
+    private boolean isOldUrl(Uri uri) {
+        return "https".equals(uri.getScheme()) && OLD_HOST.equals(uri.getHost());
+    }
+
+    private boolean isLiveUrl(Uri uri) {
+        return "https".equals(uri.getScheme()) && LIVE_HOST.equals(uri.getHost());
+    }
+
+    private String assetName(String path) {
+        if ("/".equals(path) || "/index.html".equals(path)) return "index.html";
+        if ("/app.js".equals(path)) return "app.js";
+        if ("/styles.css".equals(path)) return "styles.css";
+        return null;
+    }
+
+    private WebResourceResponse bundledAsset(String name) {
+        if (!"index.html".equals(name) && !"app.js".equals(name) && !"styles.css".equals(name)) return null;
+        try {
+            return new WebResourceResponse(mimeType(name), "UTF-8", getAssets().open(name));
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    private WebResourceResponse liveOrBundled(Uri uri, String name) {
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(uri.toString()).openConnection();
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            connection.setRequestProperty("Cache-Control", "no-cache");
+            if (connection.getResponseCode() == 200) {
+                InputStream stream = new FilterInputStream(connection.getInputStream()) {
+                    @Override
+                    public void close() throws java.io.IOException {
+                        super.close();
+                        connection.disconnect();
+                    }
+                };
+                return new WebResourceResponse(mimeType(name), "UTF-8", stream);
+            }
+            connection.disconnect();
+        } catch (Exception ignored) {
+            // The copy bundled in the APK is available when the phone is offline.
+        }
+        return bundledAsset(name);
+    }
+
+    private String decodeJsString(String value) {
+        if (value == null || "null".equals(value)) return null;
+        try {
+            return new JSONArray("[" + value + "]").getString(0);
+        } catch (Exception ignored) {
+            return null;
+        }
     }
 
     private String mimeType(String filename) {
@@ -109,8 +203,6 @@ public class MainActivity extends Activity {
         if (lower.endsWith(".html")) return "text/html";
         if (lower.endsWith(".css")) return "text/css";
         if (lower.endsWith(".js")) return "text/javascript";
-        if (lower.endsWith(".svg")) return "image/svg+xml";
-        if (lower.endsWith(".json")) return "application/json";
         return "application/octet-stream";
     }
 
@@ -154,7 +246,7 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMPORT_REQUEST) {
             if (importCallback != null) {
-                importCallback.onReceiveValue(resultCode == RESULT_OK && data != null ? new Uri[]{data.getData()} : null);
+                importCallback.onReceiveValue(resultCode == RESULT_OK && data != null && data.getData() != null ? new Uri[]{data.getData()} : null);
                 importCallback = null;
             }
         } else if (requestCode == EXPORT_REQUEST) {
