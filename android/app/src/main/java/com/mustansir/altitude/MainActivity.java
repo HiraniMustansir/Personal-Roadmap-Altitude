@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.WindowInsets;
-import android.view.WindowInsetsController;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -54,9 +53,6 @@ public class MainActivity extends Activity {
         getWindow().setNavigationBarColor(Color.rgb(8, 36, 51));
         if (Build.VERSION.SDK_INT >= 30) {
             getWindow().setDecorFitsSystemWindows(false);
-            getWindow().getInsetsController().setSystemBarsAppearance(0,
-                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
-                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
         }
 
         webView = new WebView(this);

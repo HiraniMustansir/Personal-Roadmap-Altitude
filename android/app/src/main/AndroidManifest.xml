@@ -6,7 +6,7 @@
         android:label="Altitude"
         android:icon="@drawable/ic_altitude"
         android:usesCleartextTraffic="false"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:theme="@style/AltitudeTheme">
         <activity
             android:name=".MainActivity"
             android:exported="true"
