@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.HapticFeedbackConstants;
 import android.view.WindowInsets;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
@@ -49,16 +50,16 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.rgb(8, 36, 51));
-        getWindow().setNavigationBarColor(Color.rgb(8, 36, 51));
+        getWindow().setStatusBarColor(Color.rgb(232, 239, 251));
+        getWindow().setNavigationBarColor(Color.rgb(232, 239, 251));
         if (Build.VERSION.SDK_INT >= 30) {
             getWindow().setDecorFitsSystemWindows(false);
         }
 
         webView = new WebView(this);
-        webView.setBackgroundColor(Color.rgb(246, 249, 248));
+        webView.setBackgroundColor(Color.rgb(239, 245, 251));
         FrameLayout root = new FrameLayout(this);
-        root.setBackgroundColor(Color.rgb(8, 36, 51));
+        root.setBackgroundColor(Color.rgb(232, 239, 251));
         root.addView(webView, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         if (Build.VERSION.SDK_INT >= 30) {
@@ -232,6 +233,19 @@ public class MainActivity extends Activity {
     }
 
     private class AndroidBridge {
+        @JavascriptInterface
+        public void haptic(String kind) {
+            runOnUiThread(() -> {
+                if (webView == null) return;
+                int effect = "confirm".equals(kind) && Build.VERSION.SDK_INT >= 30
+                        ? HapticFeedbackConstants.CONFIRM
+                        : "tap".equals(kind)
+                        ? HapticFeedbackConstants.VIRTUAL_KEY
+                        : HapticFeedbackConstants.CLOCK_TICK;
+                webView.performHapticFeedback(effect);
+            });
+        }
+
         @JavascriptInterface
         public void openExternal(String url) {
             Uri uri = Uri.parse(url);

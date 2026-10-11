@@ -4,13 +4,13 @@ A static, browser-based progress tracker for the cloud computing and AI roadmap.
 
 ## Download the Android app
 
-**[Download the latest Android APK (1.3)](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-1.3.apk)**
+**[Download the latest Android APK (1.4)](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-1.4.apk)**
 
-Open the link on your Android phone, then open the downloaded APK to install it. Version 1.3 fixes the launch crash in 1.2 and installs over versions 1.1 or 1.2 while keeping existing on-phone progress. It gives Android's status bar and navigation area their own space, so the app controls no longer sit behind them. Android may ask you to allow installs from your browser or file manager. Your checklist changes are stored on your phone. The APK and regular phone browser have separate progress; use the JSON backup export and import to move progress between them.
+Open the link on your Android phone, then open the downloaded APK to install it over your current version. Version 1.4 has the light glass design bundled for offline use, light Android system bars, and subtle haptic feedback for navigation and buttons. Drag across the bottom tabs or swipe across the page to switch views. The update uses the same signing key and keeps existing on-phone progress. Android may ask you to allow installs from your browser or file manager. The APK and regular phone browser have separate progress; use the JSON backup export and import to move progress between them.
 
 ### How UI updates reach the phone
 
-Edit `dist/index.html`, `dist/styles.css`, or `dist/app.js`, then push to `main`. Vercel deploys the new website. Open Altitude and tap **↻** in the top bar to load the latest UI. You do not need to rebuild or reinstall the APK for website UI changes. Native changes such as the Android system-bar fix in version 1.3 do require installing the new APK. The app loads the live UI when online and uses its bundled copy if the site is unreachable. Its checklist data remains in the app's local storage on the phone.
+Edit `dist/index.html`, `dist/styles.css`, or `dist/app.js`, then push to `main`. Vercel deploys the new website. Open Altitude and tap **↻** in the top bar to load the latest UI. You do not need to rebuild or reinstall the APK for website UI changes. Native features, such as the haptic bridge and light Android system bars in version 1.4, require the new APK. The app loads the live UI when online and uses its bundled copy if the site is unreachable. Its checklist data remains in the app's local storage on the phone.
 
 Changes to the native Android wrapper in `android/` still require a new APK. Increase `versionCode` and rebuild with the same signing key to install over the existing app without clearing its data.
 
