@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -18,6 +20,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,17 +52,33 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(Color.rgb(8, 36, 51));
         getWindow().setNavigationBarColor(Color.rgb(8, 36, 51));
+        if (Build.VERSION.SDK_INT >= 30) {
+            getWindow().setDecorFitsSystemWindows(false);
+            getWindow().getInsetsController().setSystemBarsAppearance(0,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS |
+                    WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+        }
 
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(246, 249, 248));
-        if (Build.VERSION.SDK_INT >= 35) {
-            webView.setOnApplyWindowInsetsListener((view, insets) -> {
-                Insets bars = insets.getInsets(WindowInsets.Type.systemBars());
-                view.setPadding(0, bars.top, 0, bars.bottom);
+        FrameLayout root = new FrameLayout(this);
+        root.setBackgroundColor(Color.rgb(8, 36, 51));
+        root.addView(webView, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        if (Build.VERSION.SDK_INT >= 30) {
+            root.setOnApplyWindowInsetsListener((view, insets) -> {
+                Insets bars = insets.getInsets(
+                        WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
+                FrameLayout.LayoutParams bounds = (FrameLayout.LayoutParams) webView.getLayoutParams();
+                if (bounds.leftMargin != bars.left || bounds.topMargin != bars.top ||
+                        bounds.rightMargin != bars.right || bounds.bottomMargin != bars.bottom) {
+                    bounds.setMargins(bars.left, bars.top, bars.right, bars.bottom);
+                    webView.setLayoutParams(bounds);
+                }
                 return insets;
             });
         }
-        setContentView(webView);
+        setContentView(root);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
