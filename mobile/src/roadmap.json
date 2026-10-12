@@ -1,0 +1,842 @@
+{
+  "phases": [
+    {
+      "id": "foundation",
+      "name": "Certification runway",
+      "subtitle": "Now → January 14, 2027"
+    },
+    {
+      "id": "fundamentals",
+      "name": "Core foundations",
+      "subtitle": "Linux, networking, Python & SQL"
+    },
+    {
+      "id": "backend",
+      "name": "Build the backend",
+      "subtitle": "FastAPI and PostgreSQL"
+    },
+    {
+      "id": "delivery",
+      "name": "Ship and automate",
+      "subtitle": "Docker, CI/CD and AWS"
+    },
+    {
+      "id": "operations",
+      "name": "Operate the system",
+      "subtitle": "Terraform and observability"
+    },
+    {
+      "id": "advanced",
+      "name": "Scale your thinking",
+      "subtitle": "Kubernetes and system design"
+    },
+    {
+      "id": "ai",
+      "name": "Add AI infrastructure",
+      "subtitle": "Bedrock, RAG and production readiness"
+    }
+  ],
+  "starter": [
+    {
+      "id": "cloud-practitioner",
+      "phase": "foundation",
+      "type": "certification",
+      "title": "AWS Cloud Practitioner",
+      "start": "2026-10-11",
+      "end": "2026-11-10",
+      "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+      "tasks": [
+        {
+          "id": "cloud-practitioner-0",
+          "text": "Review exam domains and core AWS services",
+          "done": false
+        },
+        {
+          "id": "cloud-practitioner-1",
+          "text": "Finish practice exams",
+          "done": false
+        },
+        {
+          "id": "cloud-practitioner-2",
+          "text": "Book and pass the certification",
+          "done": false
+        }
+      ],
+      "description": "Build your AWS vocabulary before the deeper architecture work.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "solutions-architect",
+      "phase": "foundation",
+      "type": "certification",
+      "title": "AWS Solutions Architect Associate",
+      "start": "2026-11-11",
+      "end": "2027-01-05",
+      "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      "tasks": [
+        {
+          "id": "solutions-architect-0",
+          "text": "Study VPC, compute, storage and databases",
+          "done": false
+        },
+        {
+          "id": "solutions-architect-1",
+          "text": "Design resilient architectures",
+          "done": false
+        },
+        {
+          "id": "solutions-architect-2",
+          "text": "Finish practice exams and sit the exam",
+          "done": false
+        }
+      ],
+      "description": "Your architecture foundation.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "terraform-course",
+      "phase": "foundation",
+      "type": "course",
+      "title": "Terraform Associate — Zeal Vora",
+      "start": "2026-12-15",
+      "end": "2027-01-14",
+      "url": "https://www.udemy.com/course/terraform-beginner-to-advanced/",
+      "tasks": [
+        {
+          "id": "terraform-course-0",
+          "text": "Learn providers, resources, variables and outputs",
+          "done": false
+        },
+        {
+          "id": "terraform-course-1",
+          "text": "Practice state, remote state, modules and data sources",
+          "done": false
+        },
+        {
+          "id": "terraform-course-2",
+          "text": "Build a small AWS infrastructure lab",
+          "done": false
+        },
+        {
+          "id": "terraform-course-3",
+          "text": "Prepare for Terraform Associate 004",
+          "done": false
+        }
+      ],
+      "description": "Use AWS as the provider; understand plan and state, not just commands.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "linux",
+      "phase": "fundamentals",
+      "type": "course",
+      "title": "Linux Command Line Bootcamp",
+      "start": "2027-01-15",
+      "end": "2027-01-21",
+      "url": "https://www.udemy.com/course/the-linux-command-line-bootcamp/",
+      "tasks": [
+        {
+          "id": "linux-0",
+          "text": "Navigate files and inspect text",
+          "done": false
+        },
+        {
+          "id": "linux-1",
+          "text": "Practice permissions, processes and services",
+          "done": false
+        },
+        {
+          "id": "linux-2",
+          "text": "Use pipes, redirects, SSH and cron",
+          "done": false
+        },
+        {
+          "id": "linux-3",
+          "text": "Automate one useful shell task",
+          "done": false
+        }
+      ],
+      "description": "Focus on the command line skills you will use in cloud operations.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "networking",
+      "phase": "fundamentals",
+      "type": "course",
+      "title": "Networking fundamentals",
+      "start": "2027-01-22",
+      "end": "2027-01-28",
+      "url": "https://www.udemy.com/course/networkingbasics/",
+      "tasks": [
+        {
+          "id": "networking-0",
+          "text": "Practice IPv4, CIDR and subnetting",
+          "done": false
+        },
+        {
+          "id": "networking-1",
+          "text": "Explain routing, NAT and DNS",
+          "done": false
+        },
+        {
+          "id": "networking-2",
+          "text": "Understand TCP, UDP, ports, HTTP and TLS",
+          "done": false
+        },
+        {
+          "id": "networking-3",
+          "text": "Sketch a VPC with public and private subnets",
+          "done": false
+        }
+      ],
+      "description": "Rick Crisci’s course; connect each concept to AWS VPC.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "python",
+      "phase": "fundamentals",
+      "type": "course",
+      "title": "Python for automation",
+      "start": "2027-01-29",
+      "end": "2027-02-11",
+      "url": "https://www.udemy.com/course/100-days-of-code/",
+      "tasks": [
+        {
+          "id": "python-0",
+          "text": "Cover variables, control flow and functions",
+          "done": false
+        },
+        {
+          "id": "python-1",
+          "text": "Use lists, dictionaries, classes and exceptions",
+          "done": false
+        },
+        {
+          "id": "python-2",
+          "text": "Read files and JSON; use virtual environments",
+          "done": false
+        },
+        {
+          "id": "python-3",
+          "text": "Call an API and write one automation script",
+          "done": false
+        }
+      ],
+      "description": "Use the relevant parts of Angela Yu’s course; skip the full 100-day completion goal.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "sql",
+      "phase": "fundamentals",
+      "type": "course",
+      "title": "SQL & PostgreSQL essentials",
+      "start": "2027-02-12",
+      "end": "2027-02-18",
+      "url": "https://www.udemy.com/course/the-complete-sql-bootcamp/",
+      "tasks": [
+        {
+          "id": "sql-0",
+          "text": "Write CRUD queries with filters and ordering",
+          "done": false
+        },
+        {
+          "id": "sql-1",
+          "text": "Practice JOIN and GROUP BY",
+          "done": false
+        },
+        {
+          "id": "sql-2",
+          "text": "Understand keys, indexes and transactions",
+          "done": false
+        },
+        {
+          "id": "sql-3",
+          "text": "Design a small relational schema",
+          "done": false
+        }
+      ],
+      "description": "José Portilla’s PostgreSQL-based bootcamp.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "fastapi",
+      "phase": "backend",
+      "type": "course",
+      "title": "FastAPI complete course",
+      "start": "2027-02-19",
+      "end": "2027-03-07",
+      "url": "https://www.udemy.com/course/fastapi-the-complete-course/",
+      "tasks": [
+        {
+          "id": "fastapi-0",
+          "text": "Build REST endpoints with Pydantic",
+          "done": false
+        },
+        {
+          "id": "fastapi-1",
+          "text": "Connect SQLAlchemy and PostgreSQL",
+          "done": false
+        },
+        {
+          "id": "fastapi-2",
+          "text": "Add authentication, JWT and password hashing",
+          "done": false
+        },
+        {
+          "id": "fastapi-3",
+          "text": "Handle errors, environment variables and logging",
+          "done": false
+        }
+      ],
+      "description": "Eric Roby and Chad Darby. Build toward your flagship API as you learn.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "project-api",
+      "phase": "backend",
+      "type": "project",
+      "title": "Flagship · API + database",
+      "start": "2027-02-26",
+      "end": "2027-03-10",
+      "url": "",
+      "tasks": [
+        {
+          "id": "project-api-0",
+          "text": "Choose a useful app idea and define its data model",
+          "done": false
+        },
+        {
+          "id": "project-api-1",
+          "text": "Implement FastAPI CRUD endpoints",
+          "done": false
+        },
+        {
+          "id": "project-api-2",
+          "text": "Persist data in PostgreSQL",
+          "done": false
+        },
+        {
+          "id": "project-api-3",
+          "text": "Document API behavior and add meaningful tests",
+          "done": false
+        }
+      ],
+      "description": "The first working version of your cloud native AI application.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "docker",
+      "phase": "delivery",
+      "type": "course",
+      "title": "Docker practical guide",
+      "start": "2027-03-08",
+      "end": "2027-03-21",
+      "url": "https://www.udemy.com/course/docker-kubernetes-the-practical-guide/",
+      "tasks": [
+        {
+          "id": "docker-0",
+          "text": "Understand images, layers and Dockerfiles",
+          "done": false
+        },
+        {
+          "id": "docker-1",
+          "text": "Containerize the FastAPI service",
+          "done": false
+        },
+        {
+          "id": "docker-2",
+          "text": "Run PostgreSQL and API with Docker Compose",
+          "done": false
+        },
+        {
+          "id": "docker-3",
+          "text": "Use volumes, networks and environment variables",
+          "done": false
+        }
+      ],
+      "description": "Complete the Docker sections now; return to Kubernetes later.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "project-container",
+      "phase": "delivery",
+      "type": "project",
+      "title": "Flagship · containerized stack",
+      "start": "2027-03-15",
+      "end": "2027-03-24",
+      "url": "",
+      "tasks": [
+        {
+          "id": "project-container-0",
+          "text": "Write a production-ready Dockerfile",
+          "done": false
+        },
+        {
+          "id": "project-container-1",
+          "text": "Create a Docker Compose setup",
+          "done": false
+        },
+        {
+          "id": "project-container-2",
+          "text": "Verify API and database persist correctly",
+          "done": false
+        },
+        {
+          "id": "project-container-3",
+          "text": "Add a clear local setup guide",
+          "done": false
+        }
+      ],
+      "description": "A repeatable FastAPI + PostgreSQL environment.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "github-actions",
+      "phase": "delivery",
+      "type": "course",
+      "title": "GitHub Actions & CI/CD",
+      "start": "2027-03-22",
+      "end": "2027-03-28",
+      "url": "https://www.udemy.com/course/github-actions-the-complete-guide/",
+      "tasks": [
+        {
+          "id": "github-actions-0",
+          "text": "Run tests on every push",
+          "done": false
+        },
+        {
+          "id": "github-actions-1",
+          "text": "Build the Docker image in CI",
+          "done": false
+        },
+        {
+          "id": "github-actions-2",
+          "text": "Use environment variables and secrets safely",
+          "done": false
+        },
+        {
+          "id": "github-actions-3",
+          "text": "Prepare an image push and deployment workflow",
+          "done": false
+        }
+      ],
+      "description": "Study the essentials of jobs, steps, triggers and secrets.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "aws-deploy",
+      "phase": "delivery",
+      "type": "project",
+      "title": "Flagship · deploy on AWS",
+      "start": "2027-03-29",
+      "end": "2027-04-12",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-tutorials.html",
+      "tasks": [
+        {
+          "id": "aws-deploy-0",
+          "text": "Push the image to Amazon ECR",
+          "done": false
+        },
+        {
+          "id": "aws-deploy-1",
+          "text": "Run the API on ECS Fargate behind an ALB",
+          "done": false
+        },
+        {
+          "id": "aws-deploy-2",
+          "text": "Connect RDS PostgreSQL securely",
+          "done": false
+        },
+        {
+          "id": "aws-deploy-3",
+          "text": "Verify the live service and document architecture",
+          "done": false
+        }
+      ],
+      "description": "Use the official ECS tutorials; watch cloud costs while experimenting.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "ecs-ci",
+      "phase": "delivery",
+      "type": "project",
+      "title": "Flagship · automated ECS deploy",
+      "start": "2027-04-06",
+      "end": "2027-04-16",
+      "url": "https://docs.github.com/en/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service",
+      "tasks": [
+        {
+          "id": "ecs-ci-0",
+          "text": "Configure GitHub Actions to push to ECR",
+          "done": false
+        },
+        {
+          "id": "ecs-ci-1",
+          "text": "Deploy a new ECS task definition",
+          "done": false
+        },
+        {
+          "id": "ecs-ci-2",
+          "text": "Verify a push reaches the service",
+          "done": false
+        },
+        {
+          "id": "ecs-ci-3",
+          "text": "Add a rollback or recovery note",
+          "done": false
+        }
+      ],
+      "description": "Connect your repository, CI workflow and AWS deployment.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "terraform-build",
+      "phase": "operations",
+      "type": "project",
+      "title": "Flagship · Terraform infrastructure",
+      "start": "2027-04-13",
+      "end": "2027-04-27",
+      "url": "https://developer.hashicorp.com/terraform/docs",
+      "tasks": [
+        {
+          "id": "terraform-build-0",
+          "text": "Define VPC, subnets, routes and security groups",
+          "done": false
+        },
+        {
+          "id": "terraform-build-1",
+          "text": "Provision ALB, ECS, ECR and IAM",
+          "done": false
+        },
+        {
+          "id": "terraform-build-2",
+          "text": "Provision RDS and CloudWatch resources",
+          "done": false
+        },
+        {
+          "id": "terraform-build-3",
+          "text": "Use modules and remote state",
+          "done": false
+        },
+        {
+          "id": "terraform-build-4",
+          "text": "Rebuild the environment from code",
+          "done": false
+        }
+      ],
+      "description": "Turn the certification knowledge into deployable infrastructure.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "cloudwatch",
+      "phase": "operations",
+      "type": "practice",
+      "title": "CloudWatch observability",
+      "start": "2027-04-28",
+      "end": "2027-05-07",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+      "tasks": [
+        {
+          "id": "cloudwatch-0",
+          "text": "Create log groups and useful application logs",
+          "done": false
+        },
+        {
+          "id": "cloudwatch-1",
+          "text": "Build a health dashboard",
+          "done": false
+        },
+        {
+          "id": "cloudwatch-2",
+          "text": "Add CPU, latency, 5xx and task health alarms",
+          "done": false
+        },
+        {
+          "id": "cloudwatch-3",
+          "text": "Investigate an issue with Logs Insights",
+          "done": false
+        }
+      ],
+      "description": "Prove that you can operate and troubleshoot the service.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "applications",
+      "phase": "operations",
+      "type": "practice",
+      "title": "Portfolio and applications",
+      "start": "2027-05-01",
+      "end": "2027-05-21",
+      "url": "",
+      "tasks": [
+        {
+          "id": "applications-0",
+          "text": "Write a clear architecture README",
+          "done": false
+        },
+        {
+          "id": "applications-1",
+          "text": "Capture diagrams and tradeoffs",
+          "done": false
+        },
+        {
+          "id": "applications-2",
+          "text": "Practice explaining ALB → ECS → API → RDS",
+          "done": false
+        },
+        {
+          "id": "applications-3",
+          "text": "Apply to cloud / DevOps opportunities",
+          "done": false
+        }
+      ],
+      "description": "Begin applying while the project continues to evolve.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "otel",
+      "phase": "operations",
+      "type": "practice",
+      "title": "OpenTelemetry Python",
+      "start": "2027-05-08",
+      "end": "2027-05-14",
+      "url": "https://opentelemetry.io/docs/languages/python/getting-started/",
+      "tasks": [
+        {
+          "id": "otel-0",
+          "text": "Explain logs, metrics and traces",
+          "done": false
+        },
+        {
+          "id": "otel-1",
+          "text": "Instrument the FastAPI app",
+          "done": false
+        },
+        {
+          "id": "otel-2",
+          "text": "Inspect one request trace",
+          "done": false
+        }
+      ],
+      "description": "Optional after CloudWatch feels comfortable.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "kubernetes",
+      "phase": "advanced",
+      "type": "course",
+      "title": "Kubernetes fundamentals",
+      "start": "2027-05-15",
+      "end": "2027-05-28",
+      "url": "https://www.udemy.com/course/docker-kubernetes-the-practical-guide/",
+      "tasks": [
+        {
+          "id": "kubernetes-0",
+          "text": "Learn pods, deployments, services and namespaces",
+          "done": false
+        },
+        {
+          "id": "kubernetes-1",
+          "text": "Use ConfigMaps, Secrets and resource limits",
+          "done": false
+        },
+        {
+          "id": "kubernetes-2",
+          "text": "Practice kubectl commands",
+          "done": false
+        },
+        {
+          "id": "kubernetes-3",
+          "text": "Run the app locally with kind or Minikube",
+          "done": false
+        }
+      ],
+      "description": "Use the Kubernetes half of the Docker course; start locally.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "system-design",
+      "phase": "advanced",
+      "type": "course",
+      "title": "System design concepts",
+      "start": "2027-05-29",
+      "end": "2027-06-05",
+      "url": "https://www.youtube.com/@freecodecamp",
+      "tasks": [
+        {
+          "id": "system-design-0",
+          "text": "Study load balancing, caches, queues and CDNs",
+          "done": false
+        },
+        {
+          "id": "system-design-1",
+          "text": "Review replication, sharding and CAP tradeoffs",
+          "done": false
+        },
+        {
+          "id": "system-design-2",
+          "text": "Diagram the flagship architecture",
+          "done": false
+        },
+        {
+          "id": "system-design-3",
+          "text": "Explain scaling and failure scenarios",
+          "done": false
+        }
+      ],
+      "description": "Start with freeCodeCamp’s free system design material.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "advanced-design",
+      "phase": "advanced",
+      "type": "course",
+      "title": "Advanced system design · optional",
+      "start": "2027-06-06",
+      "end": "2027-06-19",
+      "url": "https://www.udemy.com/course/system-design-interview-prep/",
+      "tasks": [
+        {
+          "id": "advanced-design-0",
+          "text": "Choose a realistic design prompt",
+          "done": false
+        },
+        {
+          "id": "advanced-design-1",
+          "text": "Explain API, cache, database and queue choices",
+          "done": false
+        },
+        {
+          "id": "advanced-design-2",
+          "text": "Practice tradeoffs out loud",
+          "done": false
+        }
+      ],
+      "description": "Frank Kane’s course is a later, optional deep dive.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "bedrock-rag",
+      "phase": "ai",
+      "type": "project",
+      "title": "Flagship · Bedrock RAG",
+      "start": "2027-06-06",
+      "end": "2027-06-20",
+      "url": "https://github.com/aws-samples/amazon-bedrock-rag-workshop",
+      "tasks": [
+        {
+          "id": "bedrock-rag-0",
+          "text": "Understand embeddings, chunking and retrieval",
+          "done": false
+        },
+        {
+          "id": "bedrock-rag-1",
+          "text": "Build a Bedrock RAG proof of concept",
+          "done": false
+        },
+        {
+          "id": "bedrock-rag-2",
+          "text": "Connect document ingestion from S3",
+          "done": false
+        },
+        {
+          "id": "bedrock-rag-3",
+          "text": "Add a useful RAG endpoint to FastAPI",
+          "done": false
+        }
+      ],
+      "description": "Extend the flagship app into a cloud native AI system.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "knowledge-bases",
+      "phase": "ai",
+      "type": "practice",
+      "title": "Bedrock Knowledge Bases",
+      "start": "2027-06-21",
+      "end": "2027-07-04",
+      "url": "https://catalog.us-east-1.prod.workshops.aws/workshops/c6b88897-84a7-4885-b9f0-855e2fc61378/en-US/20-optimizing-accuracy/lab1-advanced-chunking-options",
+      "tasks": [
+        {
+          "id": "knowledge-bases-0",
+          "text": "Compare fixed, semantic and hierarchical chunking",
+          "done": false
+        },
+        {
+          "id": "knowledge-bases-1",
+          "text": "Test retrieval relevance",
+          "done": false
+        },
+        {
+          "id": "knowledge-bases-2",
+          "text": "Evaluate answer quality and cost",
+          "done": false
+        },
+        {
+          "id": "knowledge-bases-3",
+          "text": "Document guardrails, caching and monitoring",
+          "done": false
+        }
+      ],
+      "description": "Use the AWS workshop to make RAG more reliable.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    },
+    {
+      "id": "portfolio-finish",
+      "phase": "ai",
+      "type": "project",
+      "title": "Flagship · production story",
+      "start": "2027-07-05",
+      "end": "2027-07-18",
+      "url": "",
+      "tasks": [
+        {
+          "id": "portfolio-finish-0",
+          "text": "Polish the architecture diagram and README",
+          "done": false
+        },
+        {
+          "id": "portfolio-finish-1",
+          "text": "Show CI/CD, Terraform and observability evidence",
+          "done": false
+        },
+        {
+          "id": "portfolio-finish-2",
+          "text": "Record a short demo or walkthrough",
+          "done": false
+        },
+        {
+          "id": "portfolio-finish-3",
+          "text": "Prepare an interview explanation of tradeoffs",
+          "done": false
+        }
+      ],
+      "description": "A portfolio-ready cloud native AI application.",
+      "notes": "",
+      "createdAt": "2026-10-12T06:46:20.329Z"
+    }
+  ]
+}
