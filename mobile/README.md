@@ -4,7 +4,7 @@ This is a React Native implementation of Altitude using Expo and Expo Router. It
 
 ## Features
 
-- Overview, roadmap, calendar, and insights screens
+- Focused home, roadmap, calendar, and insights screens
 - The same 24 starter checkpoints and phase data as the browser app
 - Add, edit, delete, search, filter, and complete checkpoints and tasks
 - Notes, resource links, local progress storage, haptics, and deadline reminders

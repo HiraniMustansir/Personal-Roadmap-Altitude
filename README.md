@@ -14,7 +14,7 @@ I made Altitude because I wanted one place to connect what I was studying with w
 
 ## Get Altitude
 
-**[Download the React Native Android APK](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-ReactNative-1.0.apk)**
+**[Download the React Native Android APK](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-ReactNative-1.1.apk)**
 
 The Android app is built with React Native and Expo. It keeps your roadmap on your phone and works offline; opening course links requires an internet connection.
 
