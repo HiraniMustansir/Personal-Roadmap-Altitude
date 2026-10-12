@@ -14,8 +14,8 @@ I made Altitude because I wanted one place to connect what I was studying with w
 
 ## Get Altitude
 
-**[Download the React Native Android APK](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-ReactNative-1.1.apk)**
+**[Download the React Native Android APK](https://raw.githubusercontent.com/HiraniMustansir/Personal-Roadmap-Altitude/main/Altitude-ReactNative-1.2.apk)**
 
-The Android app is built with React Native and Expo. It keeps your roadmap on your phone and works offline; opening course links requires an internet connection.
+The Android app is built with React Native and Expo. It keeps your roadmap on your phone and works offline; opening course links requires an internet connection. Future interface updates can arrive in the installed app when you open it.
 
 Progress is stored locally on your device. There is no account or cloud sync, so keeping a backup is the best way to move it to another device.

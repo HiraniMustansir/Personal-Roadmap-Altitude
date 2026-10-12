@@ -3,7 +3,17 @@
     "name": "Altitude",
     "slug": "altitude-native",
     "scheme": "altitude-native",
-    "version": "1.1.0",
+    "version": "1.2.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "checkAutomatically": "ON_LOAD",
+      "requestHeaders": {
+        "expo-channel-name": "production"
+      },
+      "url": "https://u.expo.dev/f97dc125-d7b3-4bac-b490-9b35e403596f"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -12,7 +22,7 @@
     },
     "android": {
       "package": "com.mustansir.altitudern",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "backgroundColor": "#082433",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -28,6 +38,13 @@
       "expo-sharing",
       "expo-status-bar",
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "f97dc125-d7b3-4bac-b490-9b35e403596f"
+      }
+    },
+    "owner": "hiranimustansir"
   }
 }
